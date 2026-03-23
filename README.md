@@ -1,6 +1,6 @@
 # 🧠 NeuroScan AI: Brain Tumor Classification with Swin Transformer
 
-**Developed by Devanshu Mahato**
+**Developed by Vikash Kumar Adhikari**
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://neuroscan-ai.streamlit.app/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
@@ -90,4 +90,4 @@ Once a tumor is detected, the application leverages the **Groq Cloud API** to ge
 
 ---
 
-**Made by Devanshu Mahato**
+**Made by Vikash Kumar Adhikari**
