@@ -1,0 +1,178 @@
+/*
+  ================================================================
+  === NIHAI ŞABLON v2.2 (ID ile Onarılmış Mini Sidebar)        ===
+  ================================================================
+  - Sadece, kapatılan kenar çubuğunun (mini bar) rengini
+    kullanıcının bulduğu ID ile düzelten kod güncellendi.
+*/
+
+:root {
+  /* === TEMA AYARLARI (BURAYI DÜZENLE) === */
+  --main-background-image: linear-gradient(135deg, #0F0F1F 0%, #1E1B4B 25%, #0F0F1F 50%, #2D0A3F 75%, #0F0F1F 100%);
+  --accent-color: #5d3fd3;      /* Kenarlıklar, butonlar, glow rengi */
+  --base-color: linear-gradient(90deg, #2D0A3F, #1E1B4B);        /* Sidebar, Header gibi ana panellerin rengi */
+  --font-family: Arial, Helvetica, sans-serif;
+
+
+  /* === BLUR KONTROL AYARLARI === */
+  --blur-header: 0px;        /* Üst header blur miktarı */
+  --blur-sidebar: 0px;       /* Sol sidebar blur miktarı */
+  --blur-input: 0px;          /* Input kutusu blur miktarı */
+  --blur-panels: 15px;        /* Menü ve dialog panelleri blur miktarı */
+  --blur-messages: 5px;       /* Mesaj baloncukları blur miktarı */
+
+  /* === BLUR RENK AYARLARI === */
+  --input-blur-color: rgba(119, 255, 0, 0.0);   /* Input kutusu blur rengi */
+  --message-blur-color: rgba(119, 255, 0, 0.0);  /* Mesaj baloncukları blur rengi */
+  --panel-blur-color: var(--base-color);          /* Header, sidebar, paneller blur rengi */
+
+  /* === TÜRETİLMİŞ DEĞİŞKENLER (OTOMATIK HESAPLANIR) === */
+  --text-light: #F0F2FF;
+  --glow-color-rgba: rgba(93, 63, 211, 0.4);
+  --glow-effect: 0 0 20px var(--glow-color-rgba);
+
+  --header-bg: var(--panel-blur-color);
+  --sidebar-solid: var(--panel-blur-color);
+  --dialog-bg: var(--panel-blur-color);
+  --message-bg: var(--message-blur-color);
+  --input-bg: var(--input-blur-color);
+  --border-color: var(--accent-color);
+  --scrollbar-thumb: var(--accent-color);
+  --scrollbar-track: var(--base-color);
+}
+
+/* === GENEL ARKA PLAN & FONT === */
+html, body, #__next, #root {
+  background: var(--main-background-image) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  color: var(--text-light) !important;
+  font-family: var(--font-family) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+div[class*="Layout__SidebarAndContent"],
+div[class*="ConversationPanel__ConversationWrapper"] {
+  background: transparent !important;
+}
+
+/* === KAPSAMLI ARKA PLAN DÜZELTMESİ === */
+#thread-bottom-container, #thread-bottom-container::before, #thread-bottom-container::after {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* === STABİL KODLAR (SCROLLBAR, HEADER, SIDEBAR, MESAJLAR) === */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track) !important; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb) !important; border-radius: 5px; }
+
+header#page-header {
+  background: var(--header-bg) !important;
+  backdrop-filter: blur(var(--blur-header)) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+header button, header a, button[data-testid="profile-button"] {
+    color: var(--text-light) !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+aside[class*="pt-"], nav[aria-label="Chat history"] {
+  background: var(--sidebar-solid) !important;
+  backdrop-filter: blur(var(--blur-sidebar)) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+aside > *, nav[aria-label="Chat history"] > *,
+div[class*="bg-token-bg-elevated-secondary"].sticky {
+    background: transparent !important;
+    border: none !important;
+}
+aside a, aside span { color: var(--text-light) !important; }
+
+/**************************************************************
+ * === GÜNCELLENEN KOD: KAPALI SIDEBAR (MINI BAR) ONARIMI ===
+ **************************************************************/
+/* Kenar çubuğu kapalıyken görünen mini barı ID ile hedefler */
+#stage-sidebar-tiny-bar {
+    background-color: #0F0F1F !important;
+}
+
+
+[data-message-author-role] > div > div {
+  background: var(--message-bg) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(var(--blur-messages)) !important;
+  padding: 1rem !important;
+}
+
+/* === EMBER'DEN AYNEN ALINMIŞ INPUT KUTUSU KODU === */
+form[role="region"][aria-label="Message Composer"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+form #composer-background,
+form[data-type="unified-composer"] .contain-inline-size.overflow-clip[class*='bg-[#303030]'] {
+  background: var(--input-bg) !important;
+  backdrop-filter: blur(var(--blur-input)) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--glow-effect) !important;
+  border-radius: 25px !important;
+}
+[class*="PromptTextarea__TextareaWrapper"] button[type="submit"] {
+  background: var(--accent-color) !important;
+  border-radius: 50% !important;
+}
+
+/* === DİĞER PANELLER (AYARLAR, MENÜLER) === */
+[role="menu"], div[role="dialog"] {
+  background: var(--dialog-bg) !important;
+  color: var(--text-light) !important;
+  backdrop-filter: blur(var(--blur-panels)) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 15px !important;
+}
+
+/*
+  ================================================================
+  ===         TEMA EKLENTİSİ: SIDEBAR ZEMİN ONARIMI            ===
+  ================================================================
+  Bu blok, sidebar'ın üst ve alt sabit bölümlerine solid bir
+  arkaplan ekleyerek, kayan yazıların arkalarından
+  görünmesini engeller.
+*/
+
+/* 1. Ana sidebar konteynerlerini boyar */
+aside[class*="pt-"],
+nav[aria-label="Chat history"] {
+  background: var(--base-color) !important;
+}
+
+/* 2. Sidebar'ın içindeki TÜM DOĞRUDAN alt bölümlere
+   aynı rengi uygulayarak şeffaf boşlukları yok eder. */
+aside[class*="pt-"] > * {
+  background: var(--base-color) !important;
+}
+
+/* 3. Üst ve alt yapışkan köşelerin de aynı renkte
+   olmasını garantiler. */
+div[class*="bg-token-bg-elevated-secondary"].sticky {
+  background: var(--base-color) !important;
+}
+
+/* === TÜM SCROLLBAR THUMB'LARI ZORLA DEĞİŞTİR === */
+* {
+  scrollbar-color: var(--accent-color) transparent !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color) !important;
+  border: none !important;
+}

@@ -1,0 +1,9 @@
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints
+test_log.txt
+*.png
+!test_image.png
+!test_image_glioma.png
