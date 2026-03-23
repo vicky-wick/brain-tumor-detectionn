@@ -417,6 +417,6 @@ if "label" in st.session_state:
 #  FOOTER
 # ─────────────────────────────────────────
 st.markdown(
-    '<div class="ns-footer"><span>Made by Devanshu Mahato</span></div>',
+    '<div class="ns-footer"><span>Made by wick</span></div>',
     unsafe_allow_html=True,
 )
