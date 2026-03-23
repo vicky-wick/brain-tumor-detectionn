@@ -254,7 +254,7 @@ def ai_diagnosis(tumor_type: str) -> str:
     if not _GROQ_AVAILABLE:
         return "⚠️ Groq library not installed. Run `pip install groq`."
     try:
-        groq_client = Groq(api_key="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")
+        groq_client = Groq(api_key="g6P")
         prompt = (
             f"MRI result: **{tumor_type.replace('_', ' ').title()}**. "
             "Provide: 1) What this condition is, 2) Typical symptoms, "
