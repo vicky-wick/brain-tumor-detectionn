@@ -84,7 +84,7 @@ Once a tumor is detected, the application leverages the **Groq Cloud API** to ge
 ---
 
 ## 📜 License & Acknowledgments
-- **Developer**: Devanshu Mahato
+- **Developer**: Vikash Kumar Adhikari
 - **Architecture Source**: Microsoft Swin Transformer
 - **Medical Disclosure**: This project is for educational and research purposes only. It is not intended for clinical use without proper medical certification.
 
